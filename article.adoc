@@ -1,5 +1,5 @@
-= Hauptüberschrift
-Vorname Nachname (Firma) <email@email.email>
+= Per Shell durch die Developer-Galaxie
+Sandra Parsick (Freiberufler) <mail@sandra-parsick.de>
 v1.0, 2023-06-05: Rohentwurf
 
 // Die folgenden Attribute darfst Du NICHT verändern:
@@ -14,106 +14,516 @@ v1.0, 2023-06-05: Rohentwurf
 :reproducible:
 
 // Die folgenden Attribute darfst Du gerne anpassen:
-:imagesdir: .
+:imagesdir: images
 
 [abstract]
-Dies ist der Vorlauftext des Artikels, der in wenigen Sätzen beschreibt, welche Themen die Lesenden in Deinem Artikel erwarten.
+Die Shell ist oft die schnellere Antwort auf viele Probleme im Developer-Alltag.
+Dennoch meiden viele Techies die Shell aus unterschiedlichen Gründen.
+Dieser Artikel gibt einen schnellen und opinionated Shell-Einstieg, angefangen mit einem Überblick über Terminals und Shells bis hinzu Programme für die Kommandozeile, die im Entwicklungsalltag helfen können.
 
 
-== Das ist eine Zwischenüberschrift
+== Terminal, die Benutzeroberfläche
 
-Nun folgt der eigentliche Artikeltext. Bitte schreibe im Fließtext und gebe die Zeilenschaltung nur am Ende eines Absatzes ein. Zwischen Absätzen verwende bitte eine Leerzeile. Die automatische Trennung bitte ausschalten.
+Allgemein gesprochen sind Terminals grafische Benutzeroberflächen um textbasierte Programme, wie zum Beispiel eine _Shell_, zu verwenden.
+Streng genommen, müssten Terminals Terminalemulation genannt werden, da sie die Funktion eines Computer-Terminals nachbilden.
 
-Text kann je nach Bedarf *fett* oder _kursiv_ oder *_fett und kursiv_* formatiert werden. Befehle oder ähnliches im Fliesstext können in `Monospace` geschrieben werden.
+NOTE: Ein *Computer-Terminals*  ist ein Endgerät zur Eingabe und Ausgabe von Daten und dient als Benutzerschnittstelle u.a. für Großrechner.
+Heutzutage gibt es noch branchenspezifische Terminals wie zum Beispiel Kreditkartenterminals oder Geldautomaten.
+
+Moderne Terminals bieten Komfort in der Bearbeitung der Eingabe (z.B. einfaches Kopieren und Einfügen von Befehlen), Anordnung der Eingabefenster, Definition von Short-Cuts, Plugin-Erweiterung, Anpassung des Aussehens (Schriftgröße, Farbe usw.) etc.
+
+Mittlerweile gibt es für jedes Betriebsystem Terminals, die diese Funktionalitäten mitbringen.
+Wenn die Entwicklerin auf einen Linux-System unterwegs ist, bringt die eingesetzte Desktop-Umgebung ihren eigene Terminal mit.
+KDE hat oft _Konsole_ vorinstalliert, GNOME den _Gnome Terminal_.
+Diese Terminals sind stark in der jeweiligen Desktop-Umgebung verankert.
+Das führt dazu, dass wenn der Entwickler die Desktop-Umgebung wechseln will, aber seine Terminalsoftware aus der alten Umgebung weiterverwenden möchte, die Terminalsoftware Menge Pakete von der alten Desktop-Umgebung benötigt und diese mitinstalliert werden.
+Mit _Tilix_ gibt es ein Terminal, dass Desktop-Umgebung unabhängig ist, aber dennoch die wichtigesten Funktionalitäten eines modernen Terminals mitbringt.
+
+Wenn die Entwicklerin einen Mac benutzt, dann ist als Standard-Terminal _Terminal_ installiert.
+Viele Mac-User bevorzuge aber _iterm2_.
+
+Auf dem Windows sah es lange Zeit nicht sehr gut aus mit komfortablen Terminals aus.
+Mittlerweile bietet Microsoft den _Windows Terminal_ an.
+
+Abseits dieser eher klassischen Terminals gibt es z.B. mit _fig_, _warp_ und _hyper_ Terminals mit neuen Ansätzen, die sich zum Teil wie eine IDE anfüllen.
+
+Die Auswahl ist groß und für jeden Geschmack ist was dabei.
 
 
-== Tabellen formatieren
+== Shell, die Kommandozeile
 
-Für Tabellen verwende bitte die Tabellenfunktion (keine TABs). Eine Referenz einfach per: xref:#table.one[]
-angeben.
+Im allgemeinen Sprachgebrauch versteht die Entwicklerin unter dem Begriff _Shell_ die _Befehlszeilenschnittstelle im Textmodus_ zum Betriebssystem.
+Laut Definition ist eine _Shell_ die allgemeine Schnittstelle zum Betriebsystem.
+Sie kann auch grafisch sein (_GUI_).
+Der Fokus hier liegt auf den textbasierten.
+Allgemein gesprochen bietet eine Shell eine Umgebung an, in der Benutzer über eine Kommadozeile Befehle eingeben kann, die ein Interpreter ausführt.
+Ein Befehl besteht aus dem Programmnamen gefolgt von _Argumenten_.
 
-[[table.one]]
-.Überschrift der Tabelle
-|===
-|Überschrift Spalte 1 |Überschrift Spalte 2
-
-|Zelle in Spalte 1, Zeile 2
-|Zelle in Spalte 2, Zeile 2
-
-|Zelle in Spalte 1, Zeile 3
-|Zelle in Spalte 2, Zeile 3
-
-|Zelle in Spalte 1, Zeile 4
-|Zelle in Spalte 2, Zeile 4
-|===
-
-
-== Listings einfügen
-
-So sieht ein Listing aus, bitte gebe stets einen Textbezug mit an (bspw. „siehe Listing 1“).
-So erstellt man eine Referenz auf ein Listing: xref:#listing.structure[]
-
-[[listing.structure]]
-[source,text]
-.Direkt im Dokument eingebetteter Quelltext
+[source, shell]
 ----
-public class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+ls -l /home
+----
+
+_Argumente_ können Optionen (beginnen oft mit `-` oder `--`) sein oder Eingabewerte für das Programm.
+Jede Shell bringt sogenannte Built-In Befehle mit, d.h. das sind Programme für die Kommandozeile, die mit der Shell installiert werden.
+Es können Programme für die Shell nachinstalliert werden, indem die Programme im sogenannten _Suchpfad_ installiert werden.
+
+NOTE: Der *Suchpfad* ist eine Liste mit Verzeichnissen, in der die Shell nach Programmen sucht.
+Der Wert der Shell-Variable `PATH` definiert diese Liste.
+
+Auf unixähnlichen Systemen wie Linux und Mac kommen oft Shells wie _Bash_ und _Z shell (zsh)_ zum Einsatz.
+Windows bietet _CMD_ und _Powershell_ an.
+Dank dem Windows Linux Subsystem (WSL) können die Entwickler auch die unixbasierten Shells unter Windows verwenden.
+
+Unter Entwicklern ist die Shell _fish_ recht beliebt, da sie Funktionalitäten von Haus aus mitbringt, die bei den anderen Shell nachinstalliert werden müssen, wie z.B. Textautovervollständigung, automatisierte Befehlvorschläge basierend auf den schon benutzten Befehlen.
+_Bash_ und _zsh_ sind recht ähnlich in der Benutzung und einer von beiden ist immer die Standardshell auf unixähnlichen Systemen.
+_zsh_ bietet mehr Konfigurationsmöglichkeiten an als die _Bash_ und beim Scripting verhält sich _zsh_ im Detail anders als die _Bash_.
+Im Alltag macht sich der Unterschied kaum bemerkbar.
+
+In der Community um die Shells haben sich Frameworks gebildet, um die Konfiguration der Shell besser zu verwalten (_oh-my-zsh_, _oh-my-bash_, _oh-my-posh_ um paar zu nennen).
+Darüber hinaus bieten sie an, die eigene Shell mit Alias, Plugins und Themes zu erweitern.
+Wie es sich im Alltag auswirkt, schauen wir uns am Beispiel __oh-my-zsh__ an.
+
+_oh-my-zsh_ wird mit Hilfe von __curl__ und _git_ installiert.
+Die Installation sieht so aus, dass die Installationsroutine das Framework mit allen gebundelten Plugins und Theme unter `~/.oh-my-zsh` herunterlädt und die zsh-Konfigurationsdatei `.zshrc` neu angelegt, in der die Entwicklerin später definieren kann, welche Plugins und welches Theme sie benutzen möchte.
+
+Ein _alias_ ist eine Möglichkeit in der Shell mehrere Befehle oder ein Befehl mit mehrerer Optionen zu einem neuen Befehl zusammenzufassen.
+_alias_ ist ein Art Shortcut
+_oh-my-zsh_ bringt eine eigene Liste von aliases mit, die sich über Plugins erweitern lassen.
+Diese alias helfen z.B. schneller im Dateisystem zu navigieren.
+
+[source, shell]
+.Beispiel für Alias-Definitionen in _oh-my-zsh_
+----
+# Switching directory
+<directory name>='cd <directory name>'
+..='cd ..'
+...='cd ../..'
+
+# Create directory
+md='mkdir -p'
+
+# List directory content
+l='ls -lah'
+ll='ls -lh'
+----
+
+_oh-my-zsh_ lässt mit Hilfe von Plugins erweitern.
+Es bringt eine Vielzahl an Plugins mit, die die Entwicklerin in der Konfigurationsdatei aktivieren kann.
+Sie kann externe Plugins nachinstalliert.
+
+[source, shell]
+.Plugin-Konfiguration in _oh-my-zsh_
+----
+$ cat ~/.zshrc
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git mvn)
+----
+
+Plugins sind wiederum eine Sammlung von alias und Shell-Funktionen zu einem bestimmten Werkzeugen.
+Das Plugin _git_ z.B. bietet fertige Alias für Git an, um schneller Git-Befehle einzugeben und nützliche Shell-Funktionen rund um Git, um bestimmte Anwendungsfälle schneller auszuführen.
+
+[source, shell]
+.Beispiele für git alias und Shell-Funktionen
+----
+#alias
+g='git'
+gcl='git clone'
+gl='git pull'
+gsw='git switch'
+gaa='git add -A'
+gcmsg='git commit -m '
+gp='git push'
+
+#Functions
+grename old new # reanmes branch old to new, including on the origin remote
+gbda # deletes all merged branches
+----
+
+Darüber hinaus bietet _oh-my-zsh_ mit Hilfe von _Themes_ an, das Aussehen der Shellprompt anzupassen.
+Es bringt eine Vielzahl an Themes mit, die die Entwicklerin in der Konfigurationsdatei aktivieren kann.
+Auch hier kann sie externe Themes nachinstallieren.
+
+NOTE: *Shell-Prompt*
+
+
+[source, shell]
+. Theme-Konfiguration in _oh-my-zsh_
+$ cat ~/.zshrc
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+#ZSH_THEME="agnoster"
+ZSH_THEME="simple"
+----
+
+Die Theme-Konfiguration wirkt auf dem ersten Blick wie eine Spielerei.
+Auf dem zweiten Blick bewirkt die Anpassung der Prompt dazu, dass die Entwicklerin nützliche Informationen für ihre tägliche Arbeit direkt im Blick hat (Bsp. auf welchen Git Branch sie sich aktuell befindet.)
+Themes wie _Starship_ (muss nachinstalliert werden) erweitern die Prompt mit weitern Information wie zum Beispiel, welche Version von einer Runtime benutzt die Entwicklerin aktuell.
+
+
+== Shellwerkzeuge, die den Dev-Alltag vereinfachen können
+
+Die Shell kann ihre volle Möglichkeit ausspielen, wenn auch die Werkzeuge für die Shell installiert sind.
+Doch welche Werkzeuge können helfen.
+
+Es folgt eine kleine Auflistung von Werkzeugen, die im Alltag eines Java-Entwicklers helfen können.
+
+=== Werkzeugverwaltung vereinfachen
+Je nach Projekt-Setup muss sich die Java-Entwicklerin mit unterschiedlichen Java und Buildwerkzeug Versionen hantieren.
+Die einmalige Installation der Versionen ist oft recht schnell erledigt, nur das Wechseln zwischen den Versionen ist oft recht mühselig.
+
+Dieses Problem möchte _SDKMAN!_ lösen.
+
+Es bietet eine Schnittstelle an um Werkzeuge aus dem JVM-Ökosystem (Java, Scala, Kotlin und Groovy. Ant, Gradle, Grails, Maven, SBT, Spark, Spring Boot, Vert.x und viele weitere) zu installieren und zu verwalten.
+
+Der Workflow für die Verwaltung von Java Versionen zeigt Listing xref:#listing.sdkman[]
+
+[[listing.sdkman]]
+[source,shell]
+.Java Versionen verwalten mit SDKMAN!
+----
+➜ sdk list java # listet verfügbare Java Versionen auf (Ausschbnitt)
+================================================================================
+Available Java Versions for Linux 64bit
+================================================================================
+ Vendor        | Use | Version      | Dist    | Status     | Identifier
+--------------------------------------------------------------------------------
+ Temurin       | >>> | 21.0.1       | tem     | installed  | 21.0.1-tem
+               |     | 17.0.9       | tem     | installed  | 17.0.9-tem
+               |     | 11.0.21      | tem     |            | 11.0.21-tem
+               |     | 8.0.392      | tem     |            | 8.0.392-tem
+
+
+➜ sdk install java 21.0.1-tem # installiert JDK Eclipse Temurin in Version 21.0.1
+➜ sdk default java 21.0.1-tem # setzt Eclipse Temurin in Version 21.0.1 als Default-JDK
+➜ sdk use java 17.0.9-tem # setzt Eclipse Temurin in Version 17.0.9 als JDK für die aktuelle Session
+
+----
+
+Nutzen alle im Team SDKMAN! als Verwaltungswerkzeug, kann das Team die zu benutzende JDK Version auch im Projekt definieren, in dem sie eine `.sdkmanrc`-Datei im Rootverzeichnis ablegen, die die JDK-Version definiert (siehe Listing xref:#listing.sdkmanrc[]).
+
+[[listing.sdkmanrc]]
+[source,shell]
+.Beispiel für `.sdkmanrc`
+----
+➜ cat .sdkmanrc
+# Enable auto-env through the sdkman_auto_env config
+# Add key=value pairs of SDKs to use below
+java=17.0.9-tem
+maven=3.9.6
+----
+
+Wenn die Autodetection von SDKMAN! eingeschaltet ist, dann wechselt SDKMAN! automatisch auf die richtige Version bzw. schlägt vor sie nachzuinstallieren.
+
+
+[[listing.sdkmanrc]]
+[source,shell]
+.Beispiel für `.sdkmanrc`
+----
+➜ cd myproject
+Using java version 17.0.9-tem in this shell.
+
+Using maven version 3.9.6 in this shell.
+----
+
+Ähnliche Werkzeuge gibt es auch für andere Ökosysteme.
+_nvm_ verwaltet z.B. Node-Versionen.
+_asdf_ verwaltet Werkzeuge aus verschiedenen Ökosystemen.
+
+
+
+=== Arbeiten mit Dateien
+
+Wenn die Entwicklerin schnell auf den Inhalt einer Datei zugreifen möchte, dann wird gerne auf `cat` verwiesen.
+
+
+[source, shell]
+.Beispiel mit `cat`
+----
+➜ cat pom.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.1.2</version>
+    </parent>
+
+    <groupId>com.github.sparsick</groupId>
+    <artifactId>spring-boot-example</artifactId>
+    <version>1.5.0</version>
+    <name>spring-boot-example</name>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <java.version>17</java.version>
+        <selenium.version>4.11.0</selenium.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+----
+
+`cat` ist super, wenn die Entwicklerin den Inhalt einer Datei mit Hilfe von Pipes mit anderen Werkzeugen weiterverarbeiten möchte.
+
+NOTE: *Pipe* ....
+
+`cat` ist nicht sehr hilfreich, wenn sie den Inhalt nur anschauen möchte und dafür Syntaxhervorhebung und Zeilenangaben braucht.
+
+
+Hier hilft `bat` weiter.
+Es ist leichtgewichtig wie `cat` in der Benutzung, biete aber Syntaxhervorhebung und Zeilenangaben an, bei Wunsch zeigt es auch Gitänderung pro Zeile an.
+
+[source, shell]
+.Beispiel mit `bat`
+----
+───────┬──────────────────────────────────────────────────────────────────────────────────────────────
+       │ File: pom.xml
+───────┼──────────────────────────────────────────────────────────────────────────────────────────────
+   1   │ <?xml version="1.0" encoding="UTF-8"?>
+   2   │ <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchem
+       │ a-instance"
+   3   │          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/ma
+       │ ven-4.0.0.xsd">
+   4   │     <modelVersion>4.0.0</modelVersion>
+   5   │
+   6   │     <parent>
+   7   │         <groupId>org.springframework.boot</groupId>
+   8   │         <artifactId>spring-boot-starter-parent</artifactId>
+   9   │         <version>3.1.2</version>
+  10   │     </parent>
+  11   │
+  12   │     <groupId>com.github.sparsick</groupId>
+  13   │     <artifactId>spring-boot-example</artifactId>
+  14   │     <version>1.5.0</version>
+  15   │     <name>spring-boot-example</name>
+  16   │     <description>Demo project for Spring Boot</description>
+  17   │
+  18   │     <properties>
+  19   │         <java.version>17</java.version>
+  20   │         <selenium.version>4.11.0</selenium.version>
+  21   │         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  22   │     </properties>
+  23   │
+  24   │     <dependencies>
+  25   │         <dependency>
+  26   │             <groupId>org.springframework.boot</groupId>
+  27   │             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+  28   │         </dependency>
+
+----
+
+Wenn der Etnwickler eine Menge an Dateien durchsucht möchte und dafür gerne die Shell benutzen möchte, wird er gerne auf `find` und `grep` verwiesen.
+Das sind mächtige Werkzeuge, aber nicht intuitiv zu bedienen und es fehlen bei den Ergebnissen Kontextinformationen, die für einen Entwickler interessant sind.
+Das Werkzeug _Silversearcher_ liefert genau diese Funktionalität.
+
+In der Standardbenutzung `ag suchbegriff` (siehe Listing xref:#bild.ag-default) gibt _Silversearcher_.
+
+[id="bild.ag-default"]
+image::ag-default.png[]
+
+Möchte die Entwicklerin die Suche auf bestimmte Dateitypen einschränken, kann sie es über die Option `--datentyp` (z.B. `--json` für eine Einschränkung auf JSON-Dateien, siehe Listing xref:#bild.ag-json)
+Die Option `--list-file-types` listet alle unterstützen Datentypen auf.
+
+[id="bild.ag-json"]
+image::ag-json.png[]
+
+Braucht der Entwickler doch nur eine Auflistung aller Dateien, in der ein Suchbegriff auftaucht, kann er die Ausgabe auf diese Information einschränken mit der Option `-files-with-matches` (siehe Listing xref:#bild.ag-matched-files)
+
+
+[id="bild.ag-ag-matched-files"]
+image::ag-matched-files.png[]
+
+_Silversearcher_ bietet noch weitere Optionen an, um die Suche und Ausgabe auf die eigene Bedürfnisse anzupassen.
+
+Gerade wenn die Entwickler JSON oder YAML genauer durchsuchen wollen oder einfach nur kontext-basiert parsen wollen, stößt auch _Silversearcher_ an seine Grenzen.
+Hier möchten die Entwickler darauf spezialisierte Werkzeuge benutzen wie _jq_ (für JSON) oder _yq_ benutzen.
+Es sind zwei verschiedene Werkzeuge, die Benutzung ist aber ähnlich gehalten.
+
+Angenommen die Entwickler möchten eine JSON-Datei (siehe Listing xref:listing.plainjson ) durchsuchen.
+
+[[listing.plainjson]]
+[source,json]
+----
+{"count":36,"next":"https://swapi.dev/api/starships/?page=2","previous":null,"results":[{"name":"CR90 corvette","model":"CR90 corvette","manufacturer":"Corellian Engineering Corporation","cost_in_credits":"3500000","length":"150","max_atmosphering_speed":"950","crew":"30-165","passengers":"600","cargo_capacity":"3000000","consumables":"1 year","hyperdrive_rating":"2.0","MGLT":"60","starship_class":"corvette","pilots":[],"films":["https://swapi.dev/api/films/1/","https://swapi.dev/api/films/3/","https://swapi.dev/api/films/6/"],"created":"2014-12-10T14:20:33.369000Z","edited":"2014-12-20T21:23:49.867000Z","url":"https://swapi.dev/api/starships/2/"},{"name":"Star Destroyer","model":"Imperial I-class Star Destroyer","manufacturer":"Kuat Drive Yards","cost_in_credits":"150000000","length":"1,600","max_atmosphering_speed":"975","crew":"47,060","passengers":"n/a","cargo_capacity":"36000000","consumables":"2 years","hyperdrive_rating":"2.0","MGLT":"60","starship_class":"Star Destroyer","pilots":[],"films":["https://swapi.dev/api/films/1/","https://swapi.dev/api/films/2/","https://swapi.dev/api/films/3/"],"created":"2014-12-10T15:08:19.848000Z","edited":"2014-12-20T21:23:49.870000Z","url":"https://swapi.dev/api/starships/3/"},{"name":"Sentinel-class landing craft","model":"Sentinel-class landing craft","manufacturer":"Sienar Fleet Systems, Cyngus Spaceworks","cost_in_credits":"240000","length":"38","max_atmosphering_speed":"1000","crew":"5","passengers":"75","cargo_capacity":"180000","consumables":"1 month","hyperdrive_rating":"1.0","MGLT":"70","starship_class":"landing craft","pilots":[],"films":["https://swapi.dev/api/films/1/"],"created":"2014-12-10T15:48:00.586000Z","edited":"2014-12-20T21:23:49.873000Z","url":"https://swapi.dev/api/starships/5/"},{"name":"Death Star","model":"DS-1 Orbital Battle Station","manufacturer":"Imperial Department of Military Research, Sienar Fleet Systems","cost_in_credits":"1000000000000","length":"120000","max_atmosphering_speed":"n/a","crew":"342,953","passengers":"843,342","cargo_capacity":"1000000000000","consumables":"3 years","hyperdrive_rating":"4.0","MGLT":"10","starship_class":"Deep Space Mobile Battlestation","pilots":[],"films":["https://swapi.dev/api/films/1/"],"created":"2014-12-10T16:36:50.509000Z","edited":"2014-12-20T21:26:24.783000Z","url":"https://swapi.dev/api/starships/9/"},{"name":"Millennium Falcon","model":"YT-1300 light freighter","manufacturer":"Corellian Engineering Corporation","cost_in_credits":"100000","length":"34.37","max_atmosphering_speed":"1050","crew":"4","passengers":"6","cargo_capacity":"100000","consumables":"2 months","hyperdrive_rating":"0.5","MGLT":"75","starship_class":"Light freighter","pilots":["https://swapi.dev/api/people/13/","https://swapi.dev/api/people/14/","https://swapi.dev/api/people/25/","https://swapi.dev/api/people/31/"],"films":["https://swapi.dev/api/films/1/","https://swapi.dev/api/films/2/","https://swapi.dev/api/films/3/"],"created":"2014-12-10T16:59:45.094000Z","edited":"2014-12-20T21:23:49.880000Z","url":"https://swapi.dev/api/starships/10/"},{"name":"Y-wing","model":"BTL Y-wing","manufacturer":"Koensayr Manufacturing","cost_in_credits":"134999","length":"14","max_atmosphering_speed":"1000km","crew":"2","passengers":"0","cargo_capacity":"110","consumables":"1 week","hyperdrive_rating":"1.0","MGLT":"80","starship_class":"assault starfighter","pilots":[],"films":["https://swapi.dev/api/films/1/","https://swapi.dev/api/films/2/","https://swapi.dev/api/films/3/"],"created":"2014-12-12T11:00:39.817000Z","edited":"2014-12-20T21:23:49.883000Z","url":"https://swapi.dev/api/starships/11/"},{"name":"X-wing","model":"T-65 X-wing","manufacturer":"Incom Corporation","cost_in_credits":"149999","length":"12.5","max_atmosphering_speed":"1050","crew":"1","passengers":"0","cargo_capacity":"110","consumables":"1 week","hyperdrive_rating":"1.0","MGLT":"100","starship_class":"Starfighter","pilots":["https://swapi.dev/api/people/1/","https://swapi.dev/api/people/9/","https://swapi.dev/api/people/18/","https://swapi.dev/api/people/19/"],"films":["https://swapi.dev/api/films/1/","https://swapi.dev/api/films/2/","https://swapi.dev/api/films/3/"],"created":"2014-12-12T11:19:05.340000Z","edited":"2014-12-20T21:23:49.886000Z","url":"https://swapi.dev/api/starships/12/"},{"name":"TIE Advanced x1","model":"Twin Ion Engine Advanced x1","manufacturer":"Sienar Fleet Systems","cost_in_credits":"unknown","length":"9.2","max_atmosphering_speed":"1200","crew":"1","passengers":"0","cargo_capacity":"150","consumables":"5 days","hyperdrive_rating":"1.0","MGLT":"105","starship_class":"Starfighter","pilots":["https://swapi.dev/api/people/4/"],"films":["https://swapi.dev/api/films/1/"],"created":"2014-12-12T11:21:32.991000Z","edited":"2014-12-20T21:23:49.889000Z","url":"https://swapi.dev/api/starships/13/"},{"name":"Executor","model":"Executor-class star dreadnought","manufacturer":"Kuat Drive Yards, Fondor Shipyards","cost_in_credits":"1143350000","length":"19000","max_atmosphering_speed":"n/a","crew":"279,144","passengers":"38000","cargo_capacity":"250000000","consumables":"6 years","hyperdrive_rating":"2.0","MGLT":"40","starship_class":"Star dreadnought","pilots":[],"films":["https://swapi.dev/api/films/2/","https://swapi.dev/api/films/3/"],"created":"2014-12-15T12:31:42.547000Z","edited":"2014-12-20T21:23:49.893000Z","url":"https://swapi.dev/api/starships/15/"},{"name":"Rebel transport","model":"GR-75 medium transport","manufacturer":"Gallofree Yards, Inc.","cost_in_credits":"unknown","length":"90","max_atmosphering_speed":"650","crew":"6","passengers":"90","cargo_capacity":"19000000","consumables":"6 months","hyperdrive_rating":"4.0","MGLT":"20","starship_class":"Medium transport","pilots":[],"films":["https://swapi.dev/api/films/2/","https://swapi.dev/api/films/3/"],"created":"2014-12-15T12:34:52.264000Z","edited":"2014-12-20T21:23:49.895000Z","url":"https://swapi.dev/api/starships/17/"}]}%
+----
+
+Erstes Problem ist, dass die Datei nicht formatiert ist und somit für den Entwickler schwer zu lesen ist.
+Mit `cat starships.json | jq . ` lässt sich die Datei formatieren (siehe Listing xref:listing.formatjson).
+
+[[listing.formatjson]]
+[source,json]
+.Beispiel für eine formatierten JSON-Datei (Ausschnitt)
+----
+{
+  "count": 36,
+  "next": "https://swapi.dev/api/starships/?page=2",
+  "previous": null,
+  "results": [
+    {
+      "name": "CR90 corvette",
+      "model": "CR90 corvette",
+      "manufacturer": "Corellian Engineering Corporation",
+      "cost_in_credits": "3500000",
+      "length": "150",
+      "max_atmosphering_speed": "950",
+      "crew": "30-165",
+      "passengers": "600",
+      "cargo_capacity": "3000000",
+      "consumables": "1 year",
+      "hyperdrive_rating": "2.0",
+      "MGLT": "60",
+      "starship_class": "corvette",
+      "pilots": [],
+      "films": [
+        "https://swapi.dev/api/films/1/",
+        "https://swapi.dev/api/films/3/",
+        "https://swapi.dev/api/films/6/"
+      ],
+      "created": "2014-12-10T14:20:33.369000Z",
+      "edited": "2014-12-20T21:23:49.867000Z",
+      "url": "https://swapi.dev/api/starships/2/"
+    },
+    {
+      "name": "Star Destroyer",
+      "model": "Imperial I-class Star Destroyer",
+      "manufacturer": "Kuat Drive Yards",
+      "cost_in_credits": "150000000",
+      "length": "1,600",
+      "max_atmosphering_speed": "975",
+      "crew": "47,060",
+      "passengers": "n/a",
+      "cargo_capacity": "36000000",
+      "consumables": "2 years",
+      "hyperdrive_rating": "2.0",
+      "MGLT": "60",
+      "starship_class": "Star Destroyer",
+      "pilots": [],
+      "films": [
+        "https://swapi.dev/api/films/1/",
+        "https://swapi.dev/api/films/2/",
+        "https://swapi.dev/api/films/3/"
+      ],
+      "created": "2014-12-10T15:08:19.848000Z",
+      "edited": "2014-12-20T21:23:49.870000Z",
+      "url": "https://swapi.dev/api/starships/3/"
     }
+  ]
 }
 ----
 
-Der Quelltext für das Listing kann alternativ auch aus einer Datei eingelesen werden, siehe Listing 2 (Diese Referenz ist manuell im Text angegeben).
-Hier das Listing 2 mit einer automatischen Referenz: xref:#listing.extern[].
+Möchte der Entwickler aus dem JSON nur die Werte, die unter dem Schlüssel `results` liegen, gibt er `cat starships.json| jq .results` ein.
+Möchte er es weier einschränken, z.B. nur die Namen der Sternenschiffe innerhalb des Arrays, gibt er `cat starships.json| jq '.results.[].name'` ein.
 
-[[listing.extern]]
-.Komplett aus einer externen Datei eingebundener Quelltext
+Das Werkzeug `yq` ist in der Benutzung ähnlich, nur dass es sich auf YAML-Dateien spezialisiert hat.
+
+=== HTTP-Schnittstellen aufrufen
+
+Wenn es darum geht HTTP-Schnittstellen aufzurufen, dann wird gerne auf `curl` und `wget` verwiesen.
+Diese Werkzeuge sind sehr mächtig, doch nicht sehr intuitiv zu bedienen.
+Oft braucht es etwas leichtgewichtigeres um zu Beispiel eine REST-API zu testen.
+Für diesen Anwednungsfall gibt es _httpie_.
+Es hat eine intuitive Schnittstelle und liefert alle wichtigen Informationen für den Entwickler auf einem Blick (siehe Listing xref:#listing.httpie[])
+
+[[listing.httpie]]
+[source,shell]
+.Beispiel httpie
 ----
-include::HelloWorld.java[]
+➜ http GET https://swapi.dev/api/starships/9/
+HTTP/1.1 200 OK
+Allow: GET, HEAD, OPTIONS
+Connection: keep-alive
+Content-Type: application/json
+Date: Fri, 12 Jan 2024 10:08:02 GMT
+ETag: "058c95fce38484128f1c3f2e5dd04d50"
+Server: nginx/1.16.1
+Strict-Transport-Security: max-age=15768000
+Transfer-Encoding: chunked
+Vary: Accept, Cookie
+X-Frame-Options: SAMEORIGIN
+
+{
+    "MGLT": "10",
+    "cargo_capacity": "1000000000000",
+    "consumables": "3 years",
+    "cost_in_credits": "1000000000000",
+    "created": "2014-12-10T16:36:50.509000Z",
+    "crew": "342,953",
+    "edited": "2014-12-20T21:26:24.783000Z",
+    "films": [
+        "https://swapi.dev/api/films/1/"
+    ],
+    "hyperdrive_rating": "4.0",
+    "length": "120000",
+    "manufacturer": "Imperial Department of Military Research, Sienar Fleet Systems",
+    "max_atmosphering_speed": "n/a",
+    "model": "DS-1 Orbital Battle Station",
+    "name": "Death Star",
+    "passengers": "843,342",
+    "pilots": [],
+    "starship_class": "Deep Space Mobile Battlestation",
+    "url": "https://swapi.dev/api/starships/9/"
+}
+
+
 ----
 
-Wenn nur ein Ausschnitt aus der angegebenen Datei eingebunden werden soll, so kann dieser mit Zeilennummern angegeben werden. Siehe Listing 3.
-Hier das Listing 3 mit einer automatischen Referenz: xref:#listing.extern.lines[].
+Der Aufruf erfolgt nach dem Muster `http HTTP-METHOD url`.
+Möchte die Entwicklerin nicht alle Informationen, kann sie diese über Optionen (`--headers`, `--meta`, `--body`, siehe Listing xref:#listing.httpieoption[]) einschränken.
 
-
-[[listing.extern.lines]]
-.Aus einer externen Datei eingebundene Ausschnitte
+[[listing.httpieoption]]
+[source,shell]
+.Beispiel httpie mit Optionen
 ----
-include::HelloWorld.java[lines=2..4]
+➜ http GET https://swapi.dev/api/starships/9/ --headers
+HTTP/1.1 200 OK
+Allow: GET, HEAD, OPTIONS
+Connection: keep-alive
+Content-Type: application/json
+Date: Fri, 12 Jan 2024 10:18:34 GMT
+ETag: "058c95fce38484128f1c3f2e5dd04d50"
+Server: nginx/1.16.1
+Strict-Transport-Security: max-age=15768000
+Transfer-Encoding: chunked
+Vary: Accept, Cookie
+X-Frame-Options: SAMEORIGIN
 ----
 
-Beachte bitte, dass AsciiDoc die Beschreibung über dem Listing anzeigt. In der _Java aktuell_ erscheint die Beschreibung unter dem Listing, daher "Listingunterschrift"!
+Über die Optionen kann die Entwicklerin auch die SSL und Authentisierung Einstellungen steuern.
 
 
-== Quellenangaben und Webseiten
+== Tipps und Tricks
 
-Quellenangaben <<TestQuelle>> und Links auf Webseiten <<JavaAktuell>>  sollten in zwei spitzen Klammern eine eindeutige ID verwenden, die am Ende des Artikels aufgelistet und dort mit den Details versehen werden. Die eindeutige ID kann mehrfach verwendet werden, um auf die gleiche Quelle hinzuweisen.
+Die letzten Abschnitte haben einen kleinen Überblick gegeben, wie die Shell bei alltäglichen Entwickleraufgaben helfen kann.
+Doch gerade Anfänger sind mit vielen Sachen etwas überfordert, die auf der Shell passieren.
+Daher ein paar Tipps die das Arbeiten auf der Shell vereinfachen.
 
+. *Frag deine Kollegen:* Blick bei Pair-Programming wie deine Kollegen bestimmte Aufgaben lösen und frag nach was sie gerade gemacht haben.
+. *Benutze Cheat Sheet:* Gerade bei mächtigen Werkzeugen verliert man schnell den Überblick was alles möglich ist. Cheat Sheets helfen dabei den Überblick zu behalten.
+. *Benutzt Man Pages oder die `--help` Option:* Zu jeden Werkzeug gibt es die Hilfoption oder eine Manpage (`man werkzeug`), die die Benutzung des Werkzeuges und ihre Optionen erklärt
 
-== Bilder einbinden
+Es gibt noch weitere Quellen, die gut erklären wie Befehle auf der Shell funktionieren.
+Die Webseite _Explain Shell_ erzeugt zum Beispiel eine genaue Erklärung für jeden Befehl, den man dort eingibt (siehe Listing xref:#bild.explainshell)
 
-Hier folgt ein Beispiel für eine Abbildung, bitte gebe stets einen Textbezug mit an (bspw. „siehe Abbildung 1“). Bitte speichere die Abbildung separat im Format TIF oder JPEG in möglichst hoher Auflösung ab. EPS mit 300 dpi ist ebenfalls möglich. Wichtig ist die Bildunterschrift mit Copyright-Hinweis!
-Nun auch die Referenz im Text auf die Abbildung: xref:#bild.eins[]. So gemacht wird die Nummerierung automatisch gemacht.
+[id="bild.explainshell"]
+image::explainshell.png[]
 
-.Dies ist die Bildunterschrift (© [Name, Referenz oder Quelle])
-[id="bild.eins"]
-image::java_aktuell.png[]
+Die Webseite _tldr pages_ erklärt Befehle über die Man Page hinaus anhand von Beispielen.
 
-
-== Aufzählungen
-
-Dieser Satz leitet eine nummerierte Aufzählung ein:
-
-. Punkt 1
-. Punkt 2
-. Punkt 3
-
-Und dieser Satz leitet eine nicht nummerierte Aufzählung ein:
-
-* Punkt 1
-* Punkt 2
-* Punkt 3
 
 
 [bibliography]
@@ -123,8 +533,10 @@ Die Auflistung der Quellenangaben beginnt in drei eckigen Klammern mit einer Kom
 
 - [[[TestQuelle,1]]] Autor(in) (Jahr): Titel. Verlag, Ort
 - [[[JavaAktuell,2]]] Java aktuell Website: link:https://www.ijug.eu/de/java-aktuell/zeitschrift/[]
-
+https://tldr.sh/
+https://explainshell.com/
 
 == Über den Autoren/die Autorin
 
-Hier hast Du die Möglichkeit, dich selbst in wenigen Sätzen zu präsentieren. Bitte verwende hierfür maximal 600 Zeichen inklusive Leerzeichen und schicke ein digitales Autorenfoto mit.
+Sandra Parsick ist Java Champion und arbeitet als freiberufliche Softwareentwicklerin und Consultant im Java-Umfeld. Seit 2008 beschäftigt sie sich mit agiler Softwareentwicklung in verschiedenen Rollen. Ihre Schwerpunkte liegen im Bereich Java Enterprise, Cloud, Software Craftsmanship und in der Automatisierung von Entwicklungsprozessen. Darüber schreibt sie gerne Artikel und spricht auf Konferenzen. In ihrer Freizeit engagiert sie sich in verschiedenen Programmkomitees und Community-Gruppen.
+
