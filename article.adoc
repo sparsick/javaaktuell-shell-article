@@ -25,7 +25,7 @@ Dieser Artikel gibt einen schnellen und opinionated Shell-Einstieg, angefangen m
 == Terminal, die Benutzeroberfläche
 
 Allgemein gesprochen sind Terminals grafische Benutzeroberflächen um textbasierte Programme, wie zum Beispiel eine _Shell_, zu verwenden.
-Streng genommen, müssten Terminals Terminalemulation genannt werden, da sie die Funktion eines Computer-Terminals nachbilden.
+Streng genommen, müssten Terminals Terminalemulation genannt werden, da sie die Funktion eines Computer-Terminals nachbilden <<TerminalWiki>>.
 
 NOTE: Ein *Computer-Terminals*  ist ein Endgerät zur Eingabe und Ausgabe von Daten und dient als Benutzerschnittstelle u.a. für Großrechner.
 Heutzutage gibt es noch branchenspezifische Terminals wie zum Beispiel Kreditkartenterminals oder Geldautomaten.
@@ -34,18 +34,18 @@ Moderne Terminals bieten Komfort in der Bearbeitung der Eingabe (z.B. einfaches 
 
 Mittlerweile gibt es für jedes Betriebsystem Terminals, die diese Funktionalitäten mitbringen.
 Wenn die Entwicklerin auf einen Linux-System unterwegs ist, bringt die eingesetzte Desktop-Umgebung ihren eigene Terminal mit.
-KDE hat oft _Konsole_ vorinstalliert, GNOME den _Gnome Terminal_.
+KDE hat oft _Konsole_ <<Konsole>> vorinstalliert, GNOME den _Gnome Terminal_. <<GNOMETerminal>>
 Diese Terminals sind stark in der jeweiligen Desktop-Umgebung verankert.
-Das führt dazu, dass wenn der Entwickler die Desktop-Umgebung wechseln will, aber seine Terminalsoftware aus der alten Umgebung weiterverwenden möchte, die Terminalsoftware Menge Pakete von der alten Desktop-Umgebung benötigt und diese mitinstalliert werden.
-Mit _Tilix_ gibt es ein Terminal, dass Desktop-Umgebung unabhängig ist, aber dennoch die wichtigesten Funktionalitäten eines modernen Terminals mitbringt.
+Das führt dazu, dass wenn der Entwickler die Desktop-Umgebung wechseln will, aber seine Terminalsoftware aus der alten Umgebung weiterverwenden möchte, die Terminalsoftware eine Menge an Pakete von der alten Desktop-Umgebung benötigt und diese mitinstalliert werden.
+Mit _Tilix_ <<Tilix>> gibt es ein Terminal, dass Desktop-Umgebung unabhängig ist, aber dennoch die wichtigesten Funktionalitäten eines modernen Terminals mitbringt.
 
-Wenn die Entwicklerin einen Mac benutzt, dann ist als Standard-Terminal _Terminal_ installiert.
-Viele Mac-User bevorzuge aber _iterm2_.
+Wenn die Entwicklerin einen Mac benutzt, dann ist als Standard-Terminal _Terminal_ <<MacTerminal>> installiert.
+Viele Mac-User bevorzugen aber _iterm2_ <<iterm2>>.
 
 Auf dem Windows sah es lange Zeit nicht sehr gut aus mit komfortablen Terminals aus.
-Mittlerweile bietet Microsoft den _Windows Terminal_ an.
+Mittlerweile bietet Microsoft den _Windows Terminal_ <<WindowsTerminal>> an.
 
-Abseits dieser eher klassischen Terminals gibt es z.B. mit _fig_, _warp_ und _hyper_ Terminals mit neuen Ansätzen, die sich zum Teil wie eine IDE anfüllen.
+Abseits dieser eher klassischen Terminals gibt es z.B. mit _fig_ <<fig>>, _warp_ <<warp>> und _hyper_ <<hyper>> Terminals mit neuen Ansätzen, die sich zum Teil wie eine IDEs anfüllen.
 
 Die Auswahl ist groß und für jeden Geschmack ist was dabei.
 
@@ -53,12 +53,14 @@ Die Auswahl ist groß und für jeden Geschmack ist was dabei.
 == Shell, die Kommandozeile
 
 Im allgemeinen Sprachgebrauch versteht die Entwicklerin unter dem Begriff _Shell_ die _Befehlszeilenschnittstelle im Textmodus_ zum Betriebssystem.
-Laut Definition ist eine _Shell_ die allgemeine Schnittstelle zum Betriebsystem.
+Laut Definition ist eine _Shell_ die allgemeine Schnittstelle zum Betriebsystem <<ShellWiki>>.
 Sie kann auch grafisch sein (_GUI_).
 Der Fokus hier liegt auf den textbasierten.
 Allgemein gesprochen bietet eine Shell eine Umgebung an, in der Benutzer über eine Kommadozeile Befehle eingeben kann, die ein Interpreter ausführt.
-Ein Befehl besteht aus dem Programmnamen gefolgt von _Argumenten_.
+Ein Befehl besteht aus dem Programmnamen gefolgt von _Argumenten_ (Beispiel siehe Listing xref:listing.shellbefehl).
 
+[[listing.shellbefehl]]
+.Beispiel für einen Shell-Befehl
 [source, shell]
 ----
 ls -l /home
@@ -71,20 +73,20 @@ Es können Programme für die Shell nachinstalliert werden, indem die Programme 
 NOTE: Der *Suchpfad* ist eine Liste mit Verzeichnissen, in der die Shell nach Programmen sucht.
 Der Wert der Shell-Variable `PATH` definiert diese Liste.
 
-Auf unixähnlichen Systemen wie Linux und Mac kommen oft Shells wie _Bash_ und _Z shell (zsh)_ zum Einsatz.
+Auf unixähnlichen Systemen wie Linux und Mac kommen oft Shells wie _Bash_ <<bash>> und _Z shell (zsh)_ <<zsh>> zum Einsatz.
 Windows bietet _CMD_ und _Powershell_ an.
 Dank dem Windows Linux Subsystem (WSL) können die Entwickler auch die unixbasierten Shells unter Windows verwenden.
 
-Unter Entwicklern ist die Shell _fish_ recht beliebt, da sie Funktionalitäten von Haus aus mitbringt, die bei den anderen Shell nachinstalliert werden müssen, wie z.B. Textautovervollständigung, automatisierte Befehlvorschläge basierend auf den schon benutzten Befehlen.
+Unter Entwicklern ist die Shell _fish_ <<fish>> recht beliebt, da sie Funktionalitäten von Haus aus mitbringt, die bei den anderen Shell nachinstalliert werden müssen, wie z.B. Textautovervollständigung, automatisierte Befehlvorschläge basierend auf den schon benutzten Befehlen.
 _Bash_ und _zsh_ sind recht ähnlich in der Benutzung und einer von beiden ist immer die Standardshell auf unixähnlichen Systemen.
 _zsh_ bietet mehr Konfigurationsmöglichkeiten an als die _Bash_ und beim Scripting verhält sich _zsh_ im Detail anders als die _Bash_.
 Im Alltag macht sich der Unterschied kaum bemerkbar.
 
-In der Community um die Shells haben sich Frameworks gebildet, um die Konfiguration der Shell besser zu verwalten (_oh-my-zsh_, _oh-my-bash_, _oh-my-posh_ um paar zu nennen).
+In der Community um die Shells haben sich Frameworks gebildet, um die Konfiguration der Shell besser zu verwalten (_oh-my-zsh_ <<oh-my-zsh>>, _oh-my-bash_<<oh-my-bash>>, _oh-my-posh_ <<oh-my-posh>> um paar zu nennen).
 Darüber hinaus bieten sie an, die eigene Shell mit Alias, Plugins und Themes zu erweitern.
 Wie es sich im Alltag auswirkt, schauen wir uns am Beispiel __oh-my-zsh__ an.
 
-_oh-my-zsh_ wird mit Hilfe von __curl__ und _git_ installiert.
+_oh-my-zsh_ wird mit Hilfe von _curl_ <<curl>> und _git_ <<git>> installiert.
 Die Installation sieht so aus, dass die Installationsroutine das Framework mit allen gebundelten Plugins und Theme unter `~/.oh-my-zsh` herunterlädt und die zsh-Konfigurationsdatei `.zshrc` neu angelegt, in der die Entwicklerin später definieren kann, welche Plugins und welches Theme sie benutzen möchte.
 
 Ein _alias_ ist eine Möglichkeit in der Shell mehrere Befehle oder ein Befehl mit mehrerer Optionen zu einem neuen Befehl zusammenzufassen.
@@ -148,11 +150,11 @@ Darüber hinaus bietet _oh-my-zsh_ mit Hilfe von _Themes_ an, das Aussehen der S
 Es bringt eine Vielzahl an Themes mit, die die Entwicklerin in der Konfigurationsdatei aktivieren kann.
 Auch hier kann sie externe Themes nachinstallieren.
 
-NOTE: *Shell-Prompt*
+NOTE: Mit *Shell-Prompt* ist die Eingabeaufforderung in der Shell gemeint.
 
 
 [source, shell]
-. Theme-Konfiguration in _oh-my-zsh_
+.Theme-Konfiguration in _oh-my-zsh_
 $ cat ~/.zshrc
 
 # Set name of the theme to load.
@@ -164,14 +166,13 @@ ZSH_THEME="simple"
 ----
 
 Die Theme-Konfiguration wirkt auf dem ersten Blick wie eine Spielerei.
-Auf dem zweiten Blick bewirkt die Anpassung der Prompt dazu, dass die Entwicklerin nützliche Informationen für ihre tägliche Arbeit direkt im Blick hat (Bsp. auf welchen Git Branch sie sich aktuell befindet.)
-Themes wie _Starship_ (muss nachinstalliert werden) erweitern die Prompt mit weitern Information wie zum Beispiel, welche Version von einer Runtime benutzt die Entwicklerin aktuell.
-
+Auf dem zweiten Blick bewirkt die Anpassung der Prompt dazu, dass die Entwicklerin nützliche Informationen für ihre tägliche Arbeit direkt im Blick hat (zum Beisüiel auf welchen Git Branch sie sich aktuell befindet.)
+Themes wie _Starship_ <<starship>> (muss nachinstalliert werden) erweitern die Prompt mit weitern Information wie zum Beispiel, welche Version von einer Runtime benutzt die Entwicklerin aktuell.
 
 == Shellwerkzeuge, die den Dev-Alltag vereinfachen können
 
-Die Shell kann ihre volle Möglichkeit ausspielen, wenn auch die Werkzeuge für die Shell installiert sind.
-Doch welche Werkzeuge können helfen.
+Die Shell kann ihre volle Möglichkeit ausspielen, wenn auch die richtigen Shell-Werkzeuge für die bevorstehende Aufgabe installiert sind.
+Doch welche Werkzeuge können wann helfen?
 
 Es folgt eine kleine Auflistung von Werkzeugen, die im Alltag eines Java-Entwicklers helfen können.
 
@@ -179,7 +180,7 @@ Es folgt eine kleine Auflistung von Werkzeugen, die im Alltag eines Java-Entwick
 Je nach Projekt-Setup muss sich die Java-Entwicklerin mit unterschiedlichen Java und Buildwerkzeug Versionen hantieren.
 Die einmalige Installation der Versionen ist oft recht schnell erledigt, nur das Wechseln zwischen den Versionen ist oft recht mühselig.
 
-Dieses Problem möchte _SDKMAN!_ lösen.
+Dieses Problem möchte _SDKMAN!_ <<sdkman>> lösen.
 
 Es bietet eine Schnittstelle an um Werkzeuge aus dem JVM-Ökosystem (Java, Scala, Kotlin und Groovy. Ant, Gradle, Grails, Maven, SBT, Spark, Spring Boot, Vert.x und viele weitere) zu installieren und zu verwalten.
 
@@ -222,7 +223,6 @@ maven=3.9.6
 
 Wenn die Autodetection von SDKMAN! eingeschaltet ist, dann wechselt SDKMAN! automatisch auf die richtige Version bzw. schlägt vor sie nachzuinstallieren.
 
-
 [[listing.sdkmanrc]]
 [source,shell]
 .Beispiel für `.sdkmanrc`
@@ -234,15 +234,12 @@ Using maven version 3.9.6 in this shell.
 ----
 
 Ähnliche Werkzeuge gibt es auch für andere Ökosysteme.
-_nvm_ verwaltet z.B. Node-Versionen.
-_asdf_ verwaltet Werkzeuge aus verschiedenen Ökosystemen.
-
-
+_nvm_ <<nvm>> verwaltet z.B. Node-Versionen.
+_asdf_ <<asdf>> verwaltet Werkzeuge aus verschiedenen Ökosystemen.
 
 === Arbeiten mit Dateien
 
-Wenn die Entwicklerin schnell auf den Inhalt einer Datei zugreifen möchte, dann wird gerne auf `cat` verwiesen.
-
+Wenn die Entwicklerin schnell auf den Inhalt einer Datei zugreifen möchte, dann wird gerne auf `cat` (ist oft in der Standardinstallation eines Systems dabei) <<cat>> verwiesen.
 
 [source, shell]
 .Beispiel mit `cat`
@@ -278,60 +275,21 @@ Wenn die Entwicklerin schnell auf den Inhalt einer Datei zugreifen möchte, dann
         </dependency>
 ----
 
-`cat` ist super, wenn die Entwicklerin den Inhalt einer Datei mit Hilfe von Pipes mit anderen Werkzeugen weiterverarbeiten möchte.
-
-NOTE: *Pipe* ....
+`cat` ist super, wenn die Entwicklerin den Inhalt einer Datei mit Hilfe von Pipes <<pipe>> mit anderen Werkzeugen weiterverarbeiten möchte oder mehrere Dateien zusammenführen möchte.
 
 `cat` ist nicht sehr hilfreich, wenn sie den Inhalt nur anschauen möchte und dafür Syntaxhervorhebung und Zeilenangaben braucht.
 
-
-Hier hilft `bat` weiter.
+Hier hilft das Werkzeug `bat` <<bat>> weiter.
 Es ist leichtgewichtig wie `cat` in der Benutzung, biete aber Syntaxhervorhebung und Zeilenangaben an, bei Wunsch zeigt es auch Gitänderung pro Zeile an.
 
-[source, shell]
-.Beispiel mit `bat`
-----
-───────┬──────────────────────────────────────────────────────────────────────────────────────────────
-       │ File: pom.xml
-───────┼──────────────────────────────────────────────────────────────────────────────────────────────
-   1   │ <?xml version="1.0" encoding="UTF-8"?>
-   2   │ <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchem
-       │ a-instance"
-   3   │          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/ma
-       │ ven-4.0.0.xsd">
-   4   │     <modelVersion>4.0.0</modelVersion>
-   5   │
-   6   │     <parent>
-   7   │         <groupId>org.springframework.boot</groupId>
-   8   │         <artifactId>spring-boot-starter-parent</artifactId>
-   9   │         <version>3.1.2</version>
-  10   │     </parent>
-  11   │
-  12   │     <groupId>com.github.sparsick</groupId>
-  13   │     <artifactId>spring-boot-example</artifactId>
-  14   │     <version>1.5.0</version>
-  15   │     <name>spring-boot-example</name>
-  16   │     <description>Demo project for Spring Boot</description>
-  17   │
-  18   │     <properties>
-  19   │         <java.version>17</java.version>
-  20   │         <selenium.version>4.11.0</selenium.version>
-  21   │         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  22   │     </properties>
-  23   │
-  24   │     <dependencies>
-  25   │         <dependency>
-  26   │             <groupId>org.springframework.boot</groupId>
-  27   │             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-  28   │         </dependency>
+[id="bild.bat"]
+image::bat.png[]
 
-----
-
-Wenn der Etnwickler eine Menge an Dateien durchsucht möchte und dafür gerne die Shell benutzen möchte, wird er gerne auf `find` und `grep` verwiesen.
+Wenn der Entwickler eine Menge an Dateien durchsucht möchte und dafür gerne die Shell benutzen möchte, wird er gerne auf `find` <<find>> und `grep` <<grep>> verwiesen.
 Das sind mächtige Werkzeuge, aber nicht intuitiv zu bedienen und es fehlen bei den Ergebnissen Kontextinformationen, die für einen Entwickler interessant sind.
-Das Werkzeug _Silversearcher_ liefert genau diese Funktionalität.
+Das Werkzeug _Silversearcher_ <<ag>> liefert genau diese Funktionalität.
 
-In der Standardbenutzung `ag suchbegriff` (siehe Listing xref:#bild.ag-default) gibt _Silversearcher_.
+In der Standardbenutzung `ag suchbegriff` (siehe Listing xref:#bild.ag-default) listet _Silversearcher_ alle Stellen inklusive Dateopfad und Zeileangaben, wo der gesuchte Begriff vorkommt.
 
 [id="bild.ag-default"]
 image::ag-default.png[]
@@ -342,7 +300,7 @@ Die Option `--list-file-types` listet alle unterstützen Datentypen auf.
 [id="bild.ag-json"]
 image::ag-json.png[]
 
-Braucht der Entwickler doch nur eine Auflistung aller Dateien, in der ein Suchbegriff auftaucht, kann er die Ausgabe auf diese Information einschränken mit der Option `-files-with-matches` (siehe Listing xref:#bild.ag-matched-files)
+Braucht der Entwickler doch nur eine Auflistung aller Dateien, in der ein Suchbegriff auftaucht, kann er die Ausgabe auf diese Information einschränken mit der Option `--files-with-matches` (siehe Listing xref:#bild.ag-matched-files)
 
 
 [id="bild.ag-ag-matched-files"]
@@ -351,7 +309,7 @@ image::ag-matched-files.png[]
 _Silversearcher_ bietet noch weitere Optionen an, um die Suche und Ausgabe auf die eigene Bedürfnisse anzupassen.
 
 Gerade wenn die Entwickler JSON oder YAML genauer durchsuchen wollen oder einfach nur kontext-basiert parsen wollen, stößt auch _Silversearcher_ an seine Grenzen.
-Hier möchten die Entwickler darauf spezialisierte Werkzeuge benutzen wie _jq_ (für JSON) oder _yq_ benutzen.
+Hier möchten die Entwickler darauf spezialisierte Werkzeuge benutzen wie zum Beispiel _jq_ (für JSON) <<jq>> oder _yq_ (für YAML) <<yq>> benutzen.
 Es sind zwei verschiedene Werkzeuge, die Benutzung ist aber ähnlich gehalten.
 
 Angenommen die Entwickler möchten eine JSON-Datei (siehe Listing xref:listing.plainjson ) durchsuchen.
@@ -433,10 +391,10 @@ Das Werkzeug `yq` ist in der Benutzung ähnlich, nur dass es sich auf YAML-Datei
 
 === HTTP-Schnittstellen aufrufen
 
-Wenn es darum geht HTTP-Schnittstellen aufzurufen, dann wird gerne auf `curl` und `wget` verwiesen.
+Wenn es darum geht HTTP-Schnittstellen aufzurufen, dann wird gerne auf `curl` oder `wget` <<wget>> verwiesen.
 Diese Werkzeuge sind sehr mächtig, doch nicht sehr intuitiv zu bedienen.
-Oft braucht es etwas leichtgewichtigeres um zu Beispiel eine REST-API zu testen.
-Für diesen Anwednungsfall gibt es _httpie_.
+Oft braucht es etwas leichtgewichtigeres um zum Beispiel eine REST-API zu testen.
+Für diesen Anwednungsfall gibt es _httpie_ <<httpie>>.
 Es hat eine intuitive Schnittstelle und liefert alle wichtigen Informationen für den Entwickler auf einem Blick (siehe Listing xref:#listing.httpie[])
 
 [[listing.httpie]]
@@ -503,39 +461,65 @@ Vary: Accept, Cookie
 X-Frame-Options: SAMEORIGIN
 ----
 
-Über die Optionen kann die Entwicklerin auch die SSL und Authentisierung Einstellungen steuern.
+Über weitere Optionen kann die Entwicklerin auch die SSL und Authentisierung Einstellungen steuern.
 
 
 == Tipps und Tricks
 
-Die letzten Abschnitte haben einen kleinen Überblick gegeben, wie die Shell bei alltäglichen Entwickleraufgaben helfen kann.
-Doch gerade Anfänger sind mit vielen Sachen etwas überfordert, die auf der Shell passieren.
+Die letzten Abschnitte haben einen kleinen Ausschnitt gegeben, wie die Shell bei alltäglichen Entwickleraufgaben helfen kann.
+Doch gerade Anfänger sind mit vielen Sachen, die in der Shell passieren können, etwas überfordert.
 Daher ein paar Tipps die das Arbeiten auf der Shell vereinfachen.
 
-. *Frag deine Kollegen:* Blick bei Pair-Programming wie deine Kollegen bestimmte Aufgaben lösen und frag nach was sie gerade gemacht haben.
+. *Frag deine Kollegen:* Blick bei Pair-Programming wie deine Kollegen bestimmte Aufgaben auf der Shell (vielleicht nicht nur dort) lösen und frag nach, was sie gerade gemacht haben.
 . *Benutze Cheat Sheet:* Gerade bei mächtigen Werkzeugen verliert man schnell den Überblick was alles möglich ist. Cheat Sheets helfen dabei den Überblick zu behalten.
-. *Benutzt Man Pages oder die `--help` Option:* Zu jeden Werkzeug gibt es die Hilfoption oder eine Manpage (`man werkzeug`), die die Benutzung des Werkzeuges und ihre Optionen erklärt
+. *Benutzt Man Pages oder die `--help` Option:* Zu jedem Werkzeug gibt es die Hilfoption oder eine Manpage (`man werkzeug`), die die Benutzung des Werkzeuges und ihre Optionen erklärt
 
-Es gibt noch weitere Quellen, die gut erklären wie Befehle auf der Shell funktionieren.
-Die Webseite _Explain Shell_ erzeugt zum Beispiel eine genaue Erklärung für jeden Befehl, den man dort eingibt (siehe Listing xref:#bild.explainshell)
+Es gibt noch weitere Quellen, die gut erklären wie Befehle auf der Shell funktionieren:
+Die Webseite _Explain Shell_ <<explainshell>> erzeugt zum Beispiel eine genaue Erklärung für jeden Befehl, den man dort eingibt (siehe Listing xref:#bild.explainshell)
 
 [id="bild.explainshell"]
 image::explainshell.png[]
 
-Die Webseite _tldr pages_ erklärt Befehle über die Man Page hinaus anhand von Beispielen.
-
-
+Die Webseite _tldr pages_ <<tldr>> erklärt Befehle über die Man Page hinaus anhand von Beispielen.
 
 [bibliography]
 == Quellen
 
-Die Auflistung der Quellenangaben beginnt in drei eckigen Klammern mit einer Kombination aus der im Artikel verwendeten eindeutigen ID und, mit Komma getrennt, einer fortlaufenden Zahl. Diese Zahl wird an der richtigen Stelle im Artikel als Verweis verwendet. So muss bei einer Neu-Numerierung nur diese eine Stelle angepasst werden. Anschliessend Text und Links wie gewünscht.
-
-- [[[TestQuelle,1]]] Autor(in) (Jahr): Titel. Verlag, Ort
-- [[[JavaAktuell,2]]] Java aktuell Website: link:https://www.ijug.eu/de/java-aktuell/zeitschrift/[]
-https://tldr.sh/
-https://explainshell.com/
-
+- [[[TerminalWiki, 1]]] Wikipedia zu Terminal (Computer) Webseite: link:https://de.wikipedia.org/wiki/Terminal_(Computer)[]
+- [[[Konsole, 2]]] Terminal _Konsole_ Webseite: link:https://konsole.kde.org/[]
+- [[[GNOMETerminal, 3]]] Terminal _GNOME Terminal_ Webseite: link:https://wiki.gnome.org/Apps/Terminal[]
+- [[[Tilix, 4]]] Terminal _Tilix_ Webseite: link:https://gnunn1.github.io/tilix-web/[]
+- [[[MacTerminal, 5]]] Terminal _Terminal_ für den Mac Webseite: link:https://support.apple.com/de-de/guide/terminal/welcome/mac[]
+- [[[iterm2, 6]]] Terminal _iterm2_ Webseite: link:https://iterm2.com/index.html[]
+- [[[WindowsTerminal, 7]]] Terminal _Windows Terminal_ Webseite: link:https://learn.microsoft.com/de-de/windows/terminal/[]
+- [[[fig, 8]]] Terminal _fig_ Webseite: link:https://fig.io/[]
+- [[[warp, 9]]] Terminal _warp_ Webseite: link:https://www.warp.dev/[]
+- [[[hyper, 10]]] Terminal _hyper_ Webseite: link:https://hyper.is/[]
+- [[[ShellWiki, 11]]] Wikipedia zu Shell (Betriebssystem) Webseite: link:https://de.wikipedia.org/wiki/Shell_(Betriebssystem)[]
+- [[[bash, 12]]] Bash Webseite: link:https://www.gnu.org/software/bash/[]
+- [[[zsh, 13]]] Zsh Webseite: link:https://www.zsh.org/[]
+- [[[fish, 14]]] fish Shell Webseite: link:https://fishshell.com/[]
+- [[[oh-my-zsh, 15]]] Oh My Zsh Webseite: link:https://ohmyz.sh/[]
+- [[[oh-my-bash, 16]]] Oh My Bash Webseite: link:https://ohmybash.nntoan.com/[]
+- [[[oh-my-posh, 17]]] Oh My Posh Webseite: link:https://ohmyposh.dev[]
+- [[[curl, 18]]] cUrl Webseite: link:https://curl.se/[]
+- [[[git, 19]]] Git Webseite: link:https://git-scm.com/[]
+- [[[starship, 20]]] Theme _Starship_ Webseite: link:https://starship.rs/[]
+- [[[sdkman, 21]]] SDKMAN! Webseite: link:https://sdkman.io/[]
+- [[[nvm, 22]]] nvm Webseite: link:https://github.com/nvm-sh/nvm[]
+- [[[asdf, 23]]] asdf Webseite: link:https://asdf-vm.com/[]
+- [[[cat, 24]]] cat Webseite: link:https://wiki.ubuntuusers.de/cat/[]
+- [[[pipe, 25]]] Pipes / Umleitungen Webseite: link:https://wiki.ubuntuusers.de/Shell/Umleitungen/[]
+- [[[bat, 26]]] bat Webseite: link:https://github.com/sharkdp/bat[]
+- [[[find, 27]]] find Webseite: link:https://wiki.ubuntuusers.de/find/[]
+- [[[grep, 28]]] grep Webseite: link:https://wiki.ubuntuusers.de/grep/[]
+- [[[ag, 29]]] The Silver Searcher Webseite: link:https://geoff.greer.fm/ag/[]
+- [[[jq, 30]]] jq Webseite: link:https://jqlang.github.io/jq/[]
+- [[[yq, 31]]] yq Webseite: link:https://mikefarah.gitbook.io/yq/[]
+- [[[wget, 32]]] wget Webseite: link:https://www.gnu.org/software/wget/[]
+- [[[httpie, 33]]] httpie Webseite: link:https://httpie.io/[]
+- [[[explainshell, 34]]] Webseite: link:https://explainshell.com/[]
+- [[[tldr, 35]]] Webseite: link:https://tldr.sh/[]
 == Über den Autoren/die Autorin
 
 Sandra Parsick ist Java Champion und arbeitet als freiberufliche Softwareentwicklerin und Consultant im Java-Umfeld. Seit 2008 beschäftigt sie sich mit agiler Softwareentwicklung in verschiedenen Rollen. Ihre Schwerpunkte liegen im Bereich Java Enterprise, Cloud, Software Craftsmanship und in der Automatisierung von Entwicklungsprozessen. Darüber schreibt sie gerne Artikel und spricht auf Konferenzen. In ihrer Freizeit engagiert sie sich in verschiedenen Programmkomitees und Community-Gruppen.
