@@ -56,8 +56,9 @@ Im allgemeinen Sprachgebrauch versteht die Entwicklerin unter dem Begriff _Shell
 Laut Definition ist eine _Shell_ die allgemeine Schnittstelle zum Betriebsystem <<ShellWiki>>.
 Sie kann auch grafisch sein (_GUI_).
 Der Fokus hier liegt auf den textbasierten.
+
 Allgemein gesprochen bietet eine Shell eine Umgebung an, in der Benutzer über eine Kommadozeile Befehle eingeben kann, die ein Interpreter ausführt.
-Ein Befehl besteht aus dem Programmnamen gefolgt von _Argumenten_ (Beispiel siehe Listing xref:listing.shellbefehl).
+Ein Befehl besteht aus dem Programmnamen gefolgt von _Argumenten_ (Beispiel siehe Listing xref:#listing.shellbefehl).
 
 [[listing.shellbefehl]]
 .Beispiel für einen Shell-Befehl
@@ -155,6 +156,7 @@ NOTE: Mit *Shell-Prompt* ist die Eingabeaufforderung in der Shell gemeint.
 
 [source, shell]
 .Theme-Konfiguration in _oh-my-zsh_
+----
 $ cat ~/.zshrc
 
 # Set name of the theme to load.
@@ -223,9 +225,9 @@ maven=3.9.6
 
 Wenn die Autodetection von SDKMAN! eingeschaltet ist, dann wechselt SDKMAN! automatisch auf die richtige Version bzw. schlägt vor sie nachzuinstallieren.
 
-[[listing.sdkmanrc]]
+[[listing.sdkmanauto]]
 [source,shell]
-.Beispiel für `.sdkmanrc`
+.Beispiel für Autodetection
 ----
 ➜ cd myproject
 Using java version 17.0.9-tem in this shell.
@@ -304,7 +306,7 @@ Braucht der Entwickler doch nur eine Auflistung aller Dateien, in der ein Suchbe
 
 
 [id="bild.ag-ag-matched-files"]
-image::ag-matched-files.png[]
+image::ag-matched-file.png[]
 
 _Silversearcher_ bietet noch weitere Optionen an, um die Suche und Ausgabe auf die eigene Bedürfnisse anzupassen.
 
@@ -312,7 +314,7 @@ Gerade wenn die Entwickler JSON oder YAML genauer durchsuchen wollen oder einfac
 Hier möchten die Entwickler darauf spezialisierte Werkzeuge benutzen wie zum Beispiel _jq_ (für JSON) <<jq>> oder _yq_ (für YAML) <<yq>> benutzen.
 Es sind zwei verschiedene Werkzeuge, die Benutzung ist aber ähnlich gehalten.
 
-Angenommen die Entwickler möchten eine JSON-Datei (siehe Listing xref:listing.plainjson ) durchsuchen.
+Angenommen die Entwickler möchten eine JSON-Datei (siehe Listing xref:#listing.plainjson ) durchsuchen.
 
 [[listing.plainjson]]
 [source,json]
@@ -321,7 +323,7 @@ Angenommen die Entwickler möchten eine JSON-Datei (siehe Listing xref:listing.p
 ----
 
 Erstes Problem ist, dass die Datei nicht formatiert ist und somit für den Entwickler schwer zu lesen ist.
-Mit `cat starships.json | jq . ` lässt sich die Datei formatieren (siehe Listing xref:listing.formatjson).
+Mit `cat starships.json | jq . ` lässt sich die Datei formatieren (siehe Listing xref:#listing.formatjson).
 
 [[listing.formatjson]]
 [source,json]
@@ -520,6 +522,7 @@ Die Webseite _tldr pages_ <<tldr>> erklärt Befehle über die Man Page hinaus an
 - [[[httpie, 33]]] httpie Webseite: link:https://httpie.io/[]
 - [[[explainshell, 34]]] Webseite: link:https://explainshell.com/[]
 - [[[tldr, 35]]] Webseite: link:https://tldr.sh/[]
+
 == Über den Autoren/die Autorin
 
 Sandra Parsick ist Java Champion und arbeitet als freiberufliche Softwareentwicklerin und Consultant im Java-Umfeld. Seit 2008 beschäftigt sie sich mit agiler Softwareentwicklung in verschiedenen Rollen. Ihre Schwerpunkte liegen im Bereich Java Enterprise, Cloud, Software Craftsmanship und in der Automatisierung von Entwicklungsprozessen. Darüber schreibt sie gerne Artikel und spricht auf Konferenzen. In ihrer Freizeit engagiert sie sich in verschiedenen Programmkomitees und Community-Gruppen.
