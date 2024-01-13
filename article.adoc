@@ -19,7 +19,7 @@ v1.0, 2023-06-05: Rohentwurf
 [abstract]
 Die Shell ist oft die schnellere Antwort auf viele Probleme im Developer-Alltag.
 Dennoch meiden viele Techies die Shell aus unterschiedlichen Gründen.
-Dieser Artikel gibt einen schnellen und opinionated Shell-Einstieg, angefangen mit einem Überblick über Terminals und Shells bis hinzu Programme für die Kommandozeile, die im Entwicklungsalltag helfen können.
+Dieser Artikel gibt einen schnellen und opinionated Shell-Einstieg, angefangen mit einem Überblick über Terminals und Shells bis hin zu Programme für die Kommandozeile, die im Entwicklungsalltag helfen können.
 
 
 == Terminal, die Benutzeroberfläche
@@ -33,7 +33,7 @@ Heutzutage gibt es noch branchenspezifische Terminals wie zum Beispiel Kreditkar
 Moderne Terminals bieten Komfort in der Bearbeitung der Eingabe (z.B. einfaches Kopieren und Einfügen von Befehlen), Anordnung der Eingabefenster, Definition von Short-Cuts, Plugin-Erweiterung, Anpassung des Aussehens (Schriftgröße, Farbe usw.) etc.
 
 Mittlerweile gibt es für jedes Betriebsystem Terminals, die diese Funktionalitäten mitbringen.
-Wenn die Entwicklerin auf einen Linux-System unterwegs ist, bringt die eingesetzte Desktop-Umgebung ihren eigene Terminal mit.
+Wenn die Entwicklerin auf einem Linux-System unterwegs ist, bringt die eingesetzte Desktop-Umgebung ihren eigenen Terminal mit.
 KDE hat oft _Konsole_ <<Konsole>> vorinstalliert, GNOME den _Gnome Terminal_. <<GNOMETerminal>>
 Diese Terminals sind stark in der jeweiligen Desktop-Umgebung verankert.
 Das führt dazu, dass wenn der Entwickler die Desktop-Umgebung wechseln will, aber seine Terminalsoftware aus der alten Umgebung weiterverwenden möchte, die Terminalsoftware eine Menge an Pakete von der alten Desktop-Umgebung benötigt und diese mitinstalliert werden.
@@ -87,7 +87,7 @@ In der Community um die Shells haben sich Frameworks gebildet, um die Konfigurat
 Darüber hinaus bieten sie an, die eigene Shell mit Alias, Plugins und Themes zu erweitern.
 Wie es sich im Alltag auswirkt, schauen wir uns am Beispiel __oh-my-zsh__ an.
 
-_oh-my-zsh_ wird mit Hilfe von _curl_ <<curl>> und _git_ <<git>> installiert.
+_oh-my-zsh_ wird mithilfe von _curl_ <<curl>> und _git_ <<git>> installiert.
 Die Installation sieht so aus, dass die Installationsroutine das Framework mit allen gebundelten Plugins und Theme unter `~/.oh-my-zsh` herunterlädt und die zsh-Konfigurationsdatei `.zshrc` neu angelegt, in der die Entwicklerin später definieren kann, welche Plugins und welches Theme sie benutzen möchte.
 
 Ein _alias_ ist eine Möglichkeit in der Shell mehrere Befehle oder ein Befehl mit mehrerer Optionen zu einem neuen Befehl zusammenzufassen.
@@ -111,7 +111,7 @@ l='ls -lah'
 ll='ls -lh'
 ----
 
-_oh-my-zsh_ lässt mit Hilfe von Plugins erweitern.
+_oh-my-zsh_ lässt mithilfe von Plugins erweitern.
 Es bringt eine Vielzahl an Plugins mit, die die Entwicklerin in der Konfigurationsdatei aktivieren kann.
 Sie kann externe Plugins nachinstalliert.
 
@@ -127,7 +127,7 @@ $ cat ~/.zshrc
 plugins=(git mvn)
 ----
 
-Plugins sind wiederum eine Sammlung von alias und Shell-Funktionen zu einem bestimmten Werkzeugen.
+Plugins sind wiederum eine Sammlung von alias und Shell-Funktionen zu einem bestimmten Werkzeug.
 Das Plugin _git_ z.B. bietet fertige Alias für Git an, um schneller Git-Befehle einzugeben und nützliche Shell-Funktionen rund um Git, um bestimmte Anwendungsfälle schneller auszuführen.
 
 [source, shell]
@@ -147,7 +147,7 @@ grename old new # reanmes branch old to new, including on the origin remote
 gbda # deletes all merged branches
 ----
 
-Darüber hinaus bietet _oh-my-zsh_ mit Hilfe von _Themes_ an, das Aussehen der Shellprompt anzupassen.
+Darüber hinaus bietet _oh-my-zsh_ mithilfe von _Themes_ an, das Aussehen der Shellprompt anzupassen.
 Es bringt eine Vielzahl an Themes mit, die die Entwicklerin in der Konfigurationsdatei aktivieren kann.
 Auch hier kann sie externe Themes nachinstallieren.
 
@@ -167,14 +167,14 @@ $ cat ~/.zshrc
 ZSH_THEME="simple"
 ----
 
-Die Theme-Konfiguration wirkt auf dem ersten Blick wie eine Spielerei.
-Auf dem zweiten Blick bewirkt die Anpassung der Prompt dazu, dass die Entwicklerin nützliche Informationen für ihre tägliche Arbeit direkt im Blick hat (zum Beisüiel auf welchen Git Branch sie sich aktuell befindet.)
-Themes wie _Starship_ <<starship>> (muss nachinstalliert werden) erweitern die Prompt mit weitern Information wie zum Beispiel, welche Version von einer Runtime benutzt die Entwicklerin aktuell.
+Die Theme-Konfiguration wirkt auf den ersten Blick wie eine Spielerei.
+Auf den zweiten Blick bewirkt die Anpassung der Prompt dazu, dass die Entwicklerin nützliche Informationen für ihre tägliche Arbeit direkt im Blick hat (zum Beisüiel auf welchen Git Branch sie sich aktuell befindet.)
+Themes wie _Starship_ <<starship>> (muss nachinstalliert werden) erweitern die Prompts mit weitern Information wie zum Beispiel, welche Version von einer Runtime benutzt die Entwicklerin aktuell.
 
 == Shellwerkzeuge, die den Dev-Alltag vereinfachen können
 
 Die Shell kann ihre volle Möglichkeit ausspielen, wenn auch die richtigen Shell-Werkzeuge für die bevorstehende Aufgabe installiert sind.
-Doch welche Werkzeuge können wann helfen?
+Doch welche Werkzeuge können, wann helfen?
 
 Es folgt eine kleine Auflistung von Werkzeugen, die im Alltag eines Java-Entwicklers helfen können.
 
@@ -277,7 +277,7 @@ Wenn die Entwicklerin schnell auf den Inhalt einer Datei zugreifen möchte, dann
         </dependency>
 ----
 
-`cat` ist super, wenn die Entwicklerin den Inhalt einer Datei mit Hilfe von Pipes <<pipe>> mit anderen Werkzeugen weiterverarbeiten möchte oder mehrere Dateien zusammenführen möchte.
+`cat` ist super, wenn die Entwicklerin den Inhalt einer Datei mithilfe von Pipes <<pipe>> mit anderen Werkzeugen weiterverarbeiten möchte oder mehrere Dateien zusammenführen möchte.
 
 `cat` ist nicht sehr hilfreich, wenn sie den Inhalt nur anschauen möchte und dafür Syntaxhervorhebung und Zeilenangaben braucht.
 
@@ -308,7 +308,7 @@ Braucht der Entwickler doch nur eine Auflistung aller Dateien, in der ein Suchbe
 [id="bild.ag-ag-matched-files"]
 image::ag-matched-file.png[]
 
-_Silversearcher_ bietet noch weitere Optionen an, um die Suche und Ausgabe auf die eigene Bedürfnisse anzupassen.
+_Silversearcher_ bietet noch weitere Optionen an, um die Suche und Ausgabe auf die eigenen Bedürfnisse anzupassen.
 
 Gerade wenn die Entwickler JSON oder YAML genauer durchsuchen wollen oder einfach nur kontext-basiert parsen wollen, stößt auch _Silversearcher_ an seine Grenzen.
 Hier möchten die Entwickler darauf spezialisierte Werkzeuge benutzen wie zum Beispiel _jq_ (für JSON) <<jq>> oder _yq_ (für YAML) <<yq>> benutzen.
@@ -327,7 +327,7 @@ Mit `cat starships.json | jq . ` lässt sich die Datei formatieren (siehe Listin
 
 [[listing.formatjson]]
 [source,json]
-.Beispiel für eine formatierten JSON-Datei (Ausschnitt)
+.Beispiel für eine formatierte JSON-Datei (Ausschnitt)
 ----
 {
   "count": 36,
@@ -476,7 +476,7 @@ Daher ein paar Tipps die das Arbeiten auf der Shell vereinfachen.
 . *Benutze Cheat Sheet:* Gerade bei mächtigen Werkzeugen verliert man schnell den Überblick was alles möglich ist. Cheat Sheets helfen dabei den Überblick zu behalten.
 . *Benutzt Man Pages oder die `--help` Option:* Zu jedem Werkzeug gibt es die Hilfoption oder eine Manpage (`man werkzeug`), die die Benutzung des Werkzeuges und ihre Optionen erklärt
 
-Es gibt noch weitere Quellen, die gut erklären wie Befehle auf der Shell funktionieren:
+Es gibt noch weitere Quellen, die gut erklären, wie Befehle auf der Shell funktionieren:
 Die Webseite _Explain Shell_ <<explainshell>> erzeugt zum Beispiel eine genaue Erklärung für jeden Befehl, den man dort eingibt (siehe Listing xref:#bild.explainshell)
 
 [id="bild.explainshell"]
