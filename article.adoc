@@ -211,6 +211,7 @@ Available Java Versions for Linux 64bit
 ----
 
 Nutzen alle im Team SDKMAN! als Verwaltungswerkzeug, kann das Team die zu benutzende JDK Version auch im Projekt definieren, in dem sie eine `.sdkmanrc`-Datei im Rootverzeichnis ablegen, die die JDK-Version definiert (siehe Listing xref:#listing.sdkmanrc[]).
+SDKMAN! kann diese Datei auch mit aktuell genutzten Versionen mit dem Befehl `sdk env init` anlegen.
 
 [[listing.sdkmanrc]]
 [source,shell]
@@ -223,7 +224,8 @@ java=17.0.9-tem
 maven=3.9.6
 ----
 
-Wenn die Autodetection von SDKMAN! eingeschaltet ist, dann wechselt SDKMAN! automatisch auf die richtige Version bzw. schlägt vor sie nachzuinstallieren.
+Wenn die Autodetection von SDKMAN! eingeschaltet ist, dann wechselt SDKMAN! automatisch auf die richtige Version bzw. schlägt vor sie nachzuinstallieren
+Die Entwickler können die Installation aber auch manuell anstoßen mit `sdk env install`.
 
 [[listing.sdkmanauto]]
 [source,shell]
